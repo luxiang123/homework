@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">			
+			.box {
+				width: 600px;
+				margin: 20px auto;
+				padding: 40px;
+			}
+			
+			.up {
+				border: solid 1px #666;
+				padding: 50px;
+			}
+			
+			.up:after {
+				display: block;
+				content: "";
+				clear: both;
+			}
+			
+			.demo {
+				float: left;
+				width: 200px;
+				height: 200px;
+				background-image: url(img/trash1.png);
+				background-size: cover;
+			}
+			
+			.down {
+				margin-top: 24px;
+				margin-bottom: 16px;
+			}
+			
+			.down p {
+				margin-bottom: 12px;
+			}
+			
+			.right {
+				float: right;
+			}
+			
+			.right p {
+				width: 200px;
+				padding: 10px;
+				background-color: #999;
+				margin: 10px;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box">
+			<div class="up">
+				<div class="demo"></div>
+				<div class="right">
+					<p draggable="true">《红楼梦》</p>
+					<p draggable="true">《西游记》</p>
+					<p draggable="true">《水浒传》</p>
+				</div>
+			</div>
+			<div class="down">
+				<p>删除的书：</p>
+				<ul></ul>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var demo = document.querySelector(".demo");//获取垃圾桶的demo
+			var p = document.querySelectorAll(".right p")//获取right里面的P标签
+			var list = document.querySelector(".down ul")//获取down里面的UL标签
+			
+			var tmp = null;
+			
+			for(var i = 0; i < p.length; i++) {
+				p[i].ondragstart = function() {
+					tmp = this;
+				}
+				p[i].ondragend = function() {
+					tmp = null;
+				}
+				demo.ondragover = function(e) {
+					e.preventDefault();
+				}
+				demo.ondrop = function() {
+					demo.appendChild(tmp);
+					demo.style.backgroundImage = "url(img/trash2.jpg)";
+					var newLi = document.createElement("li");
+					newLi.innerText = tmp.innerText;
+					list.appendChild(newLi);
+					demo.innerHTML = null;
+				}
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.music {
+				padding: 10px;
+				background-color:slategray;
+				width: 430px;
+				border-radius:10px 10px 10px 10px  ;
+			}
+			
+			.clear:after {
+				content: "";
+				display: block;
+				clear: both;
+			}
+			
+			.music .image {
+				width: 100px;
+				height: 100px;
+			}
+			
+			.music .image img {
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				-webkit-animation: music 5s linear infinite;
+				-webkit-animation-play-state: paused;
+			}
+			
+			.music>* {
+				float: left;
+			}
+			
+			.time {
+				float: right;
+			}
+			
+			.btn-group {
+				padding-top: 37px;
+				margin: 0px 20px;
+			}
+			
+			.btn {
+				float: left;
+				margin: 0px 5px;
+				position: relative;
+				background-image: url(img/btn_player.png);
+			}
+			
+			.btn-prev {
+				width: 16px;
+				height: 20px;
+				top: 3px;
+				background-position: -90px 0px;
+			}
+			
+			.btn-next {
+				width: 16px;
+				height: 20px;
+				top: 3px;
+				background-position: -90px -30px;
+			}
+			
+			.btn-play {
+				width: 22px;
+				height: 26px;
+				background-position: -90px -60px;
+			}
+			
+			.btn-pause {
+				width: 22px;
+				height: 26px;
+				background-position: -90px -90px;
+			}
+			
+			.time {
+				padding-top: 36px;
+			}
+			
+			@-webkit-keyframes music {
+				from {
+					-webkit-transform: rotate(0deg);
+				}
+				to {
+					-webkit-transform: rotate(359deg);
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="music clear">
+			<audio id="mp3" src="img/筷子兄弟-小苹果.mp3"></audio>
+			<div class="image">
+				<img src="img/小苹果.jpeg">
+			</div>
+
+			<div class="btn-group clear">
+				<div class="btn btn-prev"></div>
+				<div class="btn btn-play"></div>
+				<div class="btn btn-next"></div>
+			</div>
+			<div class="time">
+				<input type="range" min="0" max="100" value="0" />
+				<div>00:00/05:00</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var mp3 = document.getElementById("mp3"); //获取mp3
+			var image = document.querySelector(".image img"); //获取image里面的图片
+			var playBtn = document.querySelector(".btn-play"); //获取中间的按钮
+			var music = [{
+				mp3: 'img/筷子兄弟-小苹果.mp3',//音乐和图片
+				image: 'img/小苹果.jpeg'
+			}, {
+				mp3: 'img/刚好遇见你-李玉刚.mp3',
+				image: 'img/李玉刚.jpg'
+			}, {
+				mp3: 'img/人生路-祁隆.mp3',
+				image: 'img/祁隆.jpg'
+			}];
+			var index = 0;//声明index为第一个
+			playBtn.onclick = function() {//增加一个鼠标点击事件
+				if(mp3.paused) {
+					mp3.play();
+					playBtn.setAttribute("class", 'btn btn-pause');
+					image.style.webkitAnimationPlayState = "running";
+					showTime();
+					setInterval(showTime, 1000);
+				} else {
+					mp3.pause();
+					playBtn.setAttribute("class", 'btn btn-play');
+					image.style.webkitAnimationPlayState = "paused";
+					clearInterval(showTime);
+				}
+			}
+
+			var t = setInterval(showTime, 1000);
+
+			function showTime() {
+				var total = mp3.duration; //获取总共mp3的时长；
+				var current = mp3.currentTime; //获得当前的MP3时长；
+
+				var tm = Math.floor(total / 60); //总时长除以60取整
+				tm = tm < 10 ? '0' + tm : tm; //分钟小于10前面加0 不变
+				var ts = Math.floor(total % 60);
+				ts = ts < 10 ? '0' + ts : ts;
+
+				var cm = Math.floor(current / 60);
+				cm = cm < 10 ? '0' + cm : cm;
+
+				var cs = Math.floor(current % 60);
+				cs = cs < 10 ? '0' + cs : cs;
+
+				document.querySelector(".time div").innerText = cm + ":" + cs + "/" + tm + ":" + ts;
+				document.querySelector(".time input").value = current / total * 100;
+			}
+
+			//切换歌曲
+			document.querySelector(".btn-prev").onclick = function() {
+				index = (index-1 + music.length) % music.length;
+				mp3.setAttribute("src", music[index].mp3);
+				image.setAttribute("src", music[index].image);
+
+				mp3.play();
+				playBtn.setAttribute("class", 'btn btn-pause');
+				image.style.webkitAnimationPlayState = "running";
+				showTime();
+				setInterval(showTime, 1000);
+			}
+			
+			document.querySelector(".btn-next").onclick = function() {
+				index = (index + 1) % music.length;
+				mp3.setAttribute("src", music[index].mp3);
+				image.setAttribute("src", music[index].image);
+
+				mp3.play();
+				playBtn.setAttribute("class", 'btn btn-pause');
+				image.style.webkitAnimationPlayState = "running";
+				showTime();
+				setInterval(showTime, 1000);
+			}
+		</script>
+	</body>
+
+</html>
