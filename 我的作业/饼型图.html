@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			canvas{
+				width: 400px;
+				height: 400px;
+				display: block;
+				border: 1px solid blue;
+				margin: 50px auto;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="800" height="800"></canvas>
+		
+		<script type="text/javascript">
+			//先获取canvas 相当于画布
+			var canvas = document.querySelector("#canvas");
+			//给图的上下文 相当于笔
+			var ctx = canvas.getContext("2d");
+		
+			var start = 0;
+		    var end = 0;
+			
+			var t = setInterval(function(){
+				
+					function pie(arr){
+				var sum = 0;
+				var color = ['red','blue','yellow','pink','#333','black','orangered','#999']
+				
+				for(var i=0;i<arr.length;i++){
+					sum+=arr[i];
+				}
+				
+				end+=0.1;
+				
+				for(var i=0;i<arr.length;i++){
+					end = end+arr[i]/sum*Math.PI*2;
+					ctx.beginPath();
+					//绘制扇形
+					ctx.arc(400,400,400,start,end,false);
+					ctx.lineTo(400,400);
+					
+					//闭合路径
+				    ctx.closePath();
+				    //圆形的颜色样式 因为是8个颜色。所以取余8
+				    ctx.fillStyle = color[i%color.length];
+				    ctx.fill();
+				    //下一个扇形开始的角度
+				    start = end;
+				    
+				    
+				}								
+			}
+			//声明 一个pie的数组
+			pie([1,3,2,1,4,2,3,1])
+			
+			},200);
+		</script>
+	</body>
+</html>

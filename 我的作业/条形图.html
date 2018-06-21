@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			canvas {
+				margin: 0;
+				padding: 0;
+				background-color: #6666;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<canvas id="demo" width="500" height="500"></canvas>
+		<button id="btn">获取数据</button>
+
+		<script type="text/javascript">
+			//先获取canvas 相当于画布
+			var canvas = document.querySelector("#demo");
+			//给图的上下文 相当于笔
+			var ctx = canvas.getContext("2d");
+			//声明rec里面的 x y w h轴
+			var rec = function(x, y, w, h) {
+				this.x = x;
+				this.y = y;
+				this.w = w;
+				this.h = h;
+			//颜色大于300是红色小于300大于200的是黄色，小于200的是绿色
+				this.color = this.h > 300 ? "red" : this.h > 200 ? "yellow" : "green";
+			}
+			rec.prototype.draw = function(){
+				ctx.fillStyle = this.color;//填充的颜色
+				ctx.fillRect(this.x, this.y, this.w, this.h);//绘制已填充的矩形
+			}
+			var timer = null;
+			//设置条形条的高度
+			var Text = [
+				{ distance: 50 },
+				{ distance: 120 },
+				{ distance: 220 },
+				{ distance: 190 },
+				{ distance: 233 },
+				{ distance: 212 },
+				{ distance: 320 },
+				{ distance: 350 },
+			];
+			//增加一点电击的事件
+			btn.onclick = function() {
+				clearInterval(timer);
+				var i = 0;
+				//定时器
+				timer = setInterval(function() {
+					if(i == Text.length) {
+						return false
+					} else {
+						var y = Text[i++]["distance"];
+						new rec(i * 50, 500 - y, 30, y).draw();
+					}
+				}, 200)
+			}
+		</script>
+	</body>
+
+</html>
