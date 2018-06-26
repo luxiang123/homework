@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			body{
+				-webkit-perspective: 800px;/*perspective 属性定义 3D 元素距视图的距离*/
+			}
+			.box{
+				-webkit-transform-style:preserve-3d ;/*transform-style 属性规定如何在 3D 空间中呈现被嵌套的元素*/
+				position: relative;/*相对定位*/
+				width: 320px;
+				height:200px ;
+				margin-left: auto;/*左外边距自动*/
+				margin-right: auto;/*右外边距自动*/
+				margin-top: 100px;/*外上边距100px*/
+				
+				-webkit-transform-origin-x: 160px;/*transform-origin 属性允许您改变被转换元素的位置*/
+				-webkit-transform-origin-y: 100px;
+				-webkit-transform-origin-z: -300px;
+				/*transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜。*/
+				-webkit-transform: rotateX(-15deg) rotateY(0deg) rotateZ(0deg) translateZ(-300px);
+				-webkit-animation: rotate-auto 10s linear infinite;
+			}
+			
+			.box img{
+				position: absolute;/*绝对定位*/
+				top: 0;
+				left: 0;
+				width: 320px;
+				height: 200px;
+			}
+			
+			/*给图片增加旋转Y 和 Z轴*/
+			.box img:nth-child(1){-webkit-transform: rotateY(0deg) translateZ(400px); }
+			.box img:nth-child(2){-webkit-transform: rotateY(45deg) translateZ(400px);}
+			.box img:nth-child(3){-webkit-transform: rotateY(90deg) translateZ(400px);}
+			.box img:nth-child(4){-webkit-transform: rotateY(135deg) translateZ(400px);}
+			.box img:nth-child(5){-webkit-transform: rotateY(180deg) translateZ(400px);}
+			.box img:nth-child(6){-webkit-transform: rotateY(225deg) translateZ(400px);}
+			.box img:nth-child(7){-webkit-transform: rotateY(270deg) translateZ(400px);}
+			.box img:nth-child(8){-webkit-transform: rotateY(315deg) translateZ(400px);}
+			
+			/*增加动画旋转效果*/
+			@-webkit-keyframes rotate-auto{
+				from{
+					-webkit-transform: rotateX(-15deg) rotateY(0deg) rotateZ(0deg)  translateZ(-300px);
+				}
+				to{
+					-webkit-transform: rotateX(-15deg) rotateY(359deg) rotateZ(0deg)  translateZ(-300px);
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<img src="img/t014f9746d461d7176a.jpg"/>
+			<img src="img/photograph_strawberry_stock_photos_15157_2.jpg"/>
+			<img src="img/t012206379ae5a18983.jpg"/>
+			<img src="img/t01aa43e7ea72bcc6ad.jpg"/>
+			<img src="img/t01d21b5da40a6dcf8f.jpg"/>
+			<img src="img/t01a4fb9136419e44ae.jpg"/>
+			<img src="img/t01c250b5a70e6a0c56.jpg"/>
+			<img src="img/t01c4834457045cc8f1.jpg"/>
+		</div>
+	
+		<script src="js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+//			console.log(160/Math.tan(Math.PI/8));
+
+               	$("input").on("input propertypechange",function(){
+                var x = $("#x").val();
+				var y = $("#y").val();
+				var z = $("#z").val();
+				
+				$(".box").css("-webkit-transform","rotateX("+x+"deg) rotateY("+y+"deg) rotateZ("+z+"deg)  translateZ(-300px)");
+           
+           });
+		</script>
+	</body>
+</html>
