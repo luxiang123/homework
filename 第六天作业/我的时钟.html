@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#canvas {
+				width: 400px;
+				height: 400px;
+				border: solid 1px red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="800" height="800"></canvas>
+		<script type="text/javascript">
+			//获取canvas
+			var canvas = document.getElementById("canvas");
+			//画布
+			var ctx = canvas.getContext("2d");
+			ctx.translate(400, 400);
+            
+			drawClock();
+
+			// 获取当前时间 让clock 转起来
+			setInterval(function() {
+				drawClock();
+			}, 1000);
+             //声明一个函数  
+			function drawClock() {
+				var now = new Date();
+				var h = now.getHours();
+				var m = now.getMinutes();
+				var s = now.getSeconds();
+				
+				var  year = now.getFullYear();
+				var  m = now.getMonth()+1;
+					m = m<10?"0"+m:m;
+				var  d = now.getDate();
+					d = d<10?"0"+d:d;
+				ctx.clearRect(-400, -400, 800, 800);
+
+				// 时钟表盘
+				ctx.beginPath();
+				ctx.arc(0, 0, 380, 0, Math.PI * 2,false);
+				ctx.strokeStyle = "black";
+				ctx.lineWidth = 10;
+				ctx.stroke();
+
+				//时钟刻度
+				ctx.font = "bolder 40px 黑体 ";
+				ctx.textAlign = "center";
+				ctx.textBaseline = "middle";
+				
+				for(var i = 0; i < 60; i++) {
+					ctx.beginPath();
+					var x = 360 * Math.cos(Math.PI / 180 * i * 6);
+					var y = 360 * Math.sin(Math.PI / 180 * i * 6);
+
+					if(i % 5 == 0) {
+						ctx.fillStyle = "blue";
+						var n = (i/5+3)%12==0?12:(i/5+3)%12; 
+						ctx.fillText(n,x,y);
+					} else {
+						ctx.fillStyle = "blueviolet";
+						ctx.arc(x, y, 3, 0, Math.PI * 2);
+					}
+
+					ctx.fill();
+				}
+					
+				// 日期
+				ctx.fillStyle ="#666";
+				ctx.fillText(year+"-"+m+"-"+d,0,200);
+				
+				
+				ctx.lineCap = "round";
+				// 时针
+				ctx.save();
+				ctx.rotate(Math.PI / 180 * (30 * h + 30 / 60 * m));
+				ctx.beginPath();
+				ctx.lineWidth = 20;
+				ctx.strokeStyle = "yellow";
+				ctx.lineTo(0, 40);
+				ctx.lineTo(0, -160);
+				ctx.stroke();
+				ctx.restore();
+
+				// 分针
+				ctx.save();
+				ctx.beginPath();
+				ctx.rotate(Math.PI / 180 * (6 * m + 6 / 60 * s))
+				ctx.lineWidth = 12;
+				ctx.strokeStyle = "lightcoral";
+				ctx.lineTo(0, 50);
+				ctx.lineTo(0, -220);
+				ctx.stroke();
+				ctx.restore();
+
+				//秒针
+				ctx.save();
+				ctx.rotate(Math.PI / 180 * s * 6);
+				ctx.beginPath();
+				ctx.lineWidth = 4;
+				ctx.strokeStyle = "red";
+				ctx.lineTo(0, 65);
+				ctx.lineTo(0, -280);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.restore();
+
+			}
+		</script>
+	</body>
+</html>
