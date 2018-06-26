@@ -16,3 +16,6 @@ https://luxiang123.github.io/homework/我的作业/饼型图.html
 
 第六天作业
 https://luxiang123.github.io/homework/第六天作业/我的时钟.html
+
+第七天的作业
+https://luxiang123.github.io/homework/
