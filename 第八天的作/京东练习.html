@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style type="text/css">
+				* {
+				margin: 0;
+				padding: 0;
+				font-family: "宋体";
+			}
+			
+			html {
+				/*  calc() 计算函数
+				 *  100vw  屏幕宽度
+				 *  100vh  屏幕高度
+				 *   
+				 *  如果设计稿是750px，那么
+				 *   1rem  =  100px
+				 * */
+				font-size: calc(100vw/7.5);
+			}
+			/*图片的整体*/
+			.box {
+				width: 7.5rem;
+				height: 13.34rem;
+				background-color: #f3f5f7;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			/*头部*/
+			.nav {
+				width: initial;
+				height: 0.88rem;
+				background-image: linear-gradient(to top,#F0F0F0,#fff);
+				border-bottom: solid 0.03rem #ccc;
+				overflow: hidden;
+			}
+			/*头部左边*/
+			.nav .arrow_left {
+				display: block;
+				width: 0.24rem;
+				height: 0.41rem;
+				float: left;
+				margin-left: 0.27rem;
+				margin-top: 0.235rem;
+			}
+			
+			.nav .arrow_left img {
+				display: block;
+				width: 0.24rem;
+				height: 0.41rem;
+			}
+			/*头部中间FROM*/
+			.nav form {
+				width: 5.68rem;
+				height: 0.64rem;
+				border-radius: 0.32rem;
+				background-color: #fff;
+				border: solid 0.02rem #ccc;
+				box-sizing: border-box;
+				float: left;
+				margin: 0.12rem 0 0 0.24rem;
+				padding-top: 0.14rem;
+				padding-left: 0.26rem;
+			}
+			
+			form a {
+				display: block;
+				width: 0.3rem;
+				height: 0.3rem;
+				float: left;
+				overflow: hidden;
+			}
+			
+			form a img {
+				display: block;
+				width: 0.3rem;
+				height: 0.3rem;
+			}
+			
+			form input[type="search"] {
+				display: block;
+				width: 4.4rem;
+				height: 0.36rem;
+				line-height: 0.36rem;
+				font-size: 0.24rem;
+				color: #666;
+				border: none;
+				-webkit-appearance: none;
+				margin-left: 0.1rem;
+				float: left;
+			}
+			
+			a.nav_right {
+				display: block;
+				width: 0.36rem;
+				height: 0.36rem;
+				float: right;
+				margin: 0.24rem 0.42rem 0 0;
+			}
+			
+			a.nav_right img {
+				display: block;
+				width: 0.36rem;
+				height: 0.36rem;
+			}
+			
+			.down:after {
+				display: block;
+				content: "";
+				clear: both;
+			}
+			
+			.leftside {
+				float: left;
+				width: 1.48rem;
+				border-right: solid 0.03rem #ccc;
+				overflow: hidden;
+				margin-right: 0.14rem;
+			}
+			
+			.leftside ul li {
+				list-style: none;
+				width: 1.48rem;
+				background-color: #fff;
+			}
+			
+			.leftside ul li a {
+				display: block;
+				width: 1.48rem;
+				height: 0.94rem;
+				font-size: 0.22rem;
+				line-height: 0.94rem;
+				border-bottom: solid 0.03rem #ccc;
+				color: #111;
+				text-align: center;
+				text-decoration: none;
+			}
+			
+			.leftside ul li a:active,
+			.leftside ul li a:checked {
+				color: #ef030e;
+			}
+			
+			#demonx {
+				float: left;
+				width: 5.72rem;
+				padding-top: 0.14rem;
+			}
+			
+			#demonx .banner,
+			#demonx .banner img {
+				display: block;
+				width: 5.72rem;
+				height: 1.82rem;
+			}
+			
+			.part p {
+				font-size: 0.22rem;
+				color: blueviolet;
+				margin-top: 0.38rem;
+				margin-bottom: 0.16rem;
+			}
+			
+			.part ol {
+				list-style: none;
+				width: 4.52rem;
+				padding: 0.14rem 0.64rem 0 0.56rem;
+				background-color: #fff;
+			}
+			
+			.part ol:after {
+				display: block;
+				content: "";
+				clear: both;
+			}
+			
+			.part li {
+				width: 1.08rem;
+				float: left;
+				margin-right: 0.64rem;
+			}
+			
+			.part li:nth-child(3n+3) {
+				margin-right: 0;
+			}
+			
+			.part li a.imgp,
+			.part li img {
+				display: block;
+				width: 1.08rem;
+				height: 1.09rem;
+			}
+			
+			.part li a.wordp {
+				display: block;
+				width: 1.08rem;
+				font-size: 0.2rem;
+				color: #333;
+				text-decoration: none;
+				text-align: center;
+				margin: 0.24rem 0 0.2rem 0;
+		</style>
+	</head>
+
+	<body>
+		<!--页面的整体-->
+		<div class="box">
+			<!--页面的头部-->
+			<div class="nav">
+				<a class="arrow_left"><img src="img/images/arrow-left.png" /></a>
+				<form action="#" method="post" target="_blank">
+					<a href="#"><img src="img/images/serch.png" /></a>
+					<input type="search" value="" placeholder="APP下拉领红包哟！佘诗曼与您不见不散" />
+				</form>
+				<a class="nav_right"><img src="img/images/nav_more.png" /></a>
+			</div>
+
+			<!--页面的下面部分-->
+			<div class="down">
+				<!--页面的左边导航-->
+				<div class="leftside">
+					<ul>
+						<li>
+							<a href="#">热门推荐</a>
+						</li>
+						<li>
+							<a href="#">京东超市</a>
+						</li>
+						<li>
+							<a href="#">全球购</a>
+						</li>
+						<li>
+							<a href="#demonx">男装</a>
+						</li>
+						<li>
+							<a href="#">女装</a>
+						</li>
+						<li>
+							<a href="#">男鞋</a>
+						</li>
+						<li>
+							<a href="#">女鞋</a>
+						</li>
+						<li>
+							<a href="#">内衣配饰</a>
+						</li>
+						<li>
+							<a href="#">箱包手袋</a>
+						</li>
+						<li>
+							<a href="#">美妆个护</a>
+						</li>
+						<li>
+							<a href="#">钟表珠宝</a>
+						</li>
+						<li>
+							<a href="#">手机数码</a>
+						</li>
+						<li>
+							<a href="#">电脑办公</a>
+						</li>
+
+					</ul>
+				</div>
+				<!--导航下面大图-->
+				<div id="demonx">
+
+					<a href="#" class="banner"><img src="img/images/banner.png" alt="" /></a>
+
+					<!--热卖选购部分-->
+					<div class="part">
+
+						<p>热卖选购</p>
+						<ol>
+							<li>
+								<a href="#" class="imgp"><img src="img/images/ph02.png" /></a>
+								<a href="#" class="wordp">新品T恤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="img/images/ph02.png" /></a>
+								<a href="#" class="wordp">精品衬衫</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="img/images/ph02.png" /></a>
+								<a href="#" class="wordp">POLO衫</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="img/images/ph02.png"/></a>
+								<a href="#" class="wordp">牛仔裤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="img/images/ph02.png" /></a>
+								<a href="#" class="wordp">休闲裤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="img/images/ph02.png"/></a>
+								<a href="#" class="wordp">短裤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="img/images/ph02.png" /></a>
+								<a href="#" class="wordp">夹克</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="img/images/ph02.png" /></a>
+								<a href="#" class="wordp">西服</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="img/images/ph02.png" /></a>
+								<a href="#" class="wordp">自营男装</a>
+							</li>
+						</ol>
+					</div>
+
+					<!--右下部分-->
+					<div class="part">
+						<p>T恤</p>
+						<ol>
+							<li>
+								<a href="#" class="imgp"><img src="img/images/ph06.png" /></a>
+								<a href="#" class="wordp">新款T恤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="img/images/ph06.png" /></a>
+								<a href="#" class="wordp">长袖T恤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="img/images/ph06.png" /></a>
+								<a href="#" class="wordp">短袖T恤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="img/images/ph06.png" /></a>
+								<a href="#" class="wordp">牛仔裤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="img/images/ph06.png" /></a>
+								<a href="#" class="wordp">休闲裤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="img/images/ph06.png" /></a>
+								<a href="#" class="wordp">短裤</a>
+							</li>
+						</ol>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+	</body>
+
+</html>
