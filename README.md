@@ -19,3 +19,8 @@ https://luxiang123.github.io/homework/第六天作业/我的时钟.html
 
 第七天的作业
 https://luxiang123.github.io/homework/练习作业/旋转图片.html
+
+第八天作业
+https://luxiang123.github.io/homework/第八天的作/京东练习.html
+https://luxiang123.github.io/homework/第八天的作/天天跑酷.html
+https://luxiang123.github.io/homework/第八天的作/走动人物.html
